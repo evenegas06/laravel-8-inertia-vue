@@ -14,9 +14,9 @@
         <div class="md:grid md:grid-cols-3 md:gap-6">
           <div class="md:col-span-1">
             <div class="px-4 sm">
-              <h3 class="text-lg text-gray-900">Editar una nota</h3>
+              <h3 class="text-lg text-gray-900">Crear una nota</h3>
               <p class="text-sm text-gray-600">
-                Si editas, no podrás volver al estado anterior
+                Luego de crear la podrás editar
               </p>
             </div>
           </div>
@@ -38,7 +38,7 @@
                     rows="8"
                 ></textarea>
                 <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md">
-                    Editar
+                    Crear
                 </button>
               </form>
             </div>
@@ -58,14 +58,11 @@ export default {
     AppLayout,
     // Welcome,
   },
-  props: {
-    note: Object,
-  },
   data() {
     return {
       form: {
-        excerpt: this.note.excerpt,
-        content: this.note.content,
+        excerpt: '',
+        content: '',
       },
     };
   },
