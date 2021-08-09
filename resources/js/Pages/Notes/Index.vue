@@ -24,9 +24,16 @@
 
           <div class="md:col-span-2 mt-5 md:mt-0">
             <div class="shadow bg-white md:rounded-md p-4">
-              <inertia-link :href="route('notes.create')" class="bg-blue-500 text-white font-bold py-2 px-4 rounded-md">
-                Crear
-              </inertia-link>
+              <div class="flex justify-between">
+                <input type="text" class="form-input rounded-md shadow" placeholder="Buscar..." v-model="q">
+                <inertia-link
+                  :href="route('notes.create')"
+                  class="bg-blue-500 text-white font-bold py-2 px-4 rounded-md"
+                >
+                  Crear
+                </inertia-link>
+              </div>
+              <hr class="my-6">
               <table>
                 <tr v-for="note in notes" :key="note.id">
                   <td class="border px-4 py-2">
@@ -64,5 +71,15 @@ export default {
   props: {
     notes: Array,
   },
+  data() {
+    return {
+      q: ''
+    }
+  },
+  watch: {
+    q: function(value) {
+      this.$inertia.replace(this.route('notes.index', {q: value}))
+    }
+  }
 };
 </script>
